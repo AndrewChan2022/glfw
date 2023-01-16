@@ -34,7 +34,7 @@
 #include <stdlib.h>
 #include <stddef.h>
 #include <stdio.h>
-#include <windows.h>
+//#include <windows.h>
 
 /*#define printf printf2
 
@@ -124,7 +124,11 @@ int main(void)
     glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, 3);
     glfwWindowHint(GLFW_OPENGL_PROFILE, GLFW_OPENGL_CORE_PROFILE);
 
+#if defined(__APPLE__)
+    GLFWwindow* window = glfwCreateWindow(1920/2, 1080/2, "OpenGL Triangle", NULL, NULL);
+#else
     GLFWwindow* window = glfwCreateWindow(1920, 1080, "OpenGL Triangle", NULL, NULL);
+#endif
     if (!window)
     {
         glfwTerminate();
